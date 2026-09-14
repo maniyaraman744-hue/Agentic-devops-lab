@@ -1,0 +1,22 @@
+name: Agentic DevOps CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test HTML
+        run: |
+          test -f index.html
+          grep -q "Agentic DevOps" index.html
+
+      - name: CI Success
+        run: echo "Build and tests passed"
